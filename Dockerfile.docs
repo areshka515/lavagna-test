@@ -1,0 +1,10 @@
+FROM maven:ibmjava-alpine
+
+WORKDIR /documentation
+
+COPY src ./src
+COPY pom.xml ./
+
+RUN mvn clean stampo:build
+
+ENTRYPOINT ["mvn", "stampo:serve"]
